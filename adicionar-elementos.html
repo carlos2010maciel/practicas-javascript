@@ -1,0 +1,48 @@
+<!-- Jessica está creando una página para guardar las tareas que necesita realizar en el día, una lista de “To Do”. Las
+actividades están compuestas de un pequeño texto, son recogidas a través de la etiqueta <input> y guardadas en el HTML.
+
+Observa cómo quedó el archivo HTML elaborado por Jessica: -->
+
+//HTML
+<ul class="Actividades">
+    <li>Ir al médico</li>
+    <li>Cambiar la contraseña del Wi Fi</li>
+    <li>Estudiar Javascript</li>
+</ul>
+<form class="adicionar-tarea">
+    <input type="text" name="tarea">
+    <button id="boton-adicionar">Guardar</button>
+</form>
+
+<!-- Y el archivo JavaScript:
+<script>
+    // Javascript
+    var form = document.querySelector('.adicionar-tarea');
+    var boton = document.querySelector('#boton-adicionar');
+    boton.addEventListener("click", function () {
+        console.log(form.tarea.value);
+        //Código para adicionar en la lista de Actividades
+    });
+</script>
+
+El código JavaScript adiciona el contenido escrito en el input, como un nuevo ítem en la lista. Sin embargo, Jessica ya hizo varias pruebas y siempre que hace clic en el botón “guardar”, la página es cargada automáticamente y el contenido digitado en el input es borrado. Aparte de eso, el console.log(), ubicado después del evento click, no está siendo ejecutado.
+
+¿Cómo podemos ayudar a Jessica para que al momento de hacer clic en el botón guardar la función anónima que está asociada al evento sea ejecutada? -->
+
+
+
+<!-- SOLUCIÓN: El comportamiento padrón de un form, cuando hacemos clic en un button o en un input submit, que están dentro del form, es enviar a cargar la página nuevamente. Para evitar este comportamiento, debemos llamar a la función de JavaScript que previene ese comportamiento padrón de ciertos elementos: event.preventDefault() -->
+
+<script>
+    var form = document.querySelector('.adicionar-tarea');
+    var boton = document.querySelector('#boton-adicionar');
+    boton.addEventListener("click", function () {
+        event.preventDefault();
+        console.log(form.tarea.value);
+        var ul = document.querySelector(".Actividades");
+        var li = document.createElement("li");
+        li.appendChild(document.createTextNode(form.tarea.value));
+        ul.appendChild(li);
+        //Código para adicionar en la lista de Actividades
+    });
+</script>
