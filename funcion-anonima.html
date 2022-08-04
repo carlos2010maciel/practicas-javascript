@@ -1,0 +1,17 @@
+<!-- Por ser una declaración de función, podemos utilizar la misma función para otros eventos del sistema. Sin embargo, no
+tiene mucho sentido aprovechar la función en otros lugares porque es una función relacionada a un evento específico,
+para ello, es recomendable crear y usar las funciones anónimas.
+
+La estructura es parecida a las funciones que son declaradas, solo que omitimos el nombre de la función. Los otros
+elementos permanecen. -->
+
+<button id="boton">Haga clic</button>
+<script>
+    var boton = document.querySelector('#boton');
+
+    boton.addEventListener('click', function () {
+
+        alert('Fue realizado clic en el botón');
+
+    });
+</script>
