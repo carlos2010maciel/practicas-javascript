@@ -1,0 +1,69 @@
+<!-- Copiando valores
+
+Felipe para probar sus habilidades adquiridas quiso hacer un test y creó el siguiente HTML:
+
+<input class="frase"><button class="boton">Copiar</button><span class="copia"></span>
+
+El código anterior exhibe un campo para digitar una frase y un botón al lado. Su intención es copiar la frase digitada
+para la etiqueta span que está al lado del botón. Aparte de eso, ni bien la copia sea realizada, será necesario borrar
+el contenido del input con la clase frase.
+
+Felipe sabe que todo elemento de entrada, esto es, que recibe entrada del usuario posee la propiedad value, mientras que
+elementos que exhiben informaciones apenas poseen la propiedad textContent, como es el caso de nuestra etiqueta span.
+
+Él comenzó a construir el código pero paró en el medio. Este es el código escrito por Felipe:
+
+<input class="frase"><button class="boton">Copiar</button><span class="copia"></span>
+<script>
+    var inputFrase = document.querySelector('.frase');
+    var boton = document.querySelector('.boton');
+    var copia = document.querySelector('.copia');
+
+    function botonHandler() {
+
+        // no sabe qué hacer aquí
+    }
+
+    boton.addEventListener('click', botonHandler);
+</script>
+
+
+¿Cuál de las opciones completa correctamente la función botonHandler para ejecutar la copia de valores desde el input
+para la etiqueta span, a cada clic en el botón, y luego de copiar, borrar los valores en el input?
+
+A)
+function botonHandler() {
+copia.value = inputFrase.textContent;
+inputFrase.textContent = "";
+}
+
+B)
+function botonHandler() {
+copia.textContent = inputFrase.value;
+inputFrase.value = "";
+}
+
+¡Alternativa Correcta!
+Por más simple que ese ejemplo sea, es evidente que necesitamos saber los fundamentos de JavaScript para hacerlo
+funcionar correctamente.
+
+C)
+function botonHandler() {
+inputFrase.value = "";
+copia.textContent = inputFrase.value;
+}
+ -->
+
+<input class="frase"><button class="boton">Copiar</button><span class="copia"></span>
+<script>
+    var inputFrase = document.querySelector('.frase');
+    var boton = document.querySelector('.boton');
+    var copia = document.querySelector('.copia');
+
+    function botonHandler() {
+        copia.textContent = inputFrase.value;
+        inputFrase.value = "";
+    }
+
+    boton.addEventListener('click', botonHandler);
+</script>
